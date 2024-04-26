@@ -14,21 +14,23 @@
 using namespace cv;
 using namespace std;
 
-double dist; // Distance from the pinhole to the object
+double dist; // Distance from the pinhole to the objec
 double Xfocallength = 3269.0; // Focal length in the X direction from calibration
 double Yfocallength = 3284.0; // Focal length in the Y direction from calibration
-double Href = 345.0; // Actual length of the reference (A4 paper size)
-double Lref = 235.0; // Actual height of the reference (A4 paper size)
+double Href = 345.0; // Actual length of the reference (Acryl)
+double Lref = 235.0; // Actual height of the reference (Acryl)
 double realL; // Variable to store the actual length of the object (50x50 square)
 double realH; // Variable to store the actual height of the object
 int ScaleFactor = 4;
 const double MIN_CONTOUR_AREA = 20000; // Minimum contour area
+int width1 = 50;
+int width2 = 100;
 
 // Function for resizing the image to be visible
 void showimage(const Mat& image, const string& windowName, double scaleFactor);
 
 // Image processing function
-void processImage(const Mat& image, const string& windowName);
+void processImage(const Mat& image, const string& windowName, int width);
 
 int main() {
     // Load the image
@@ -57,9 +59,9 @@ int main() {
     }*/
 
     // Call the image processing function
-    processImage(image1, "Contours 1");
+    processImage(image1, "Contours 1", width1);
     //processImage(image2, "Contours 2");
-    processImage(image3, "Contours 3");
+    processImage(image3, "Contours 3", width2);
     //processImage(image4, "Contours 4");
 
     //processImage(image, image2);
@@ -80,7 +82,7 @@ void showimage(const Mat& image, const string& windowName, double scaleFactor) {
 }
 
 // Implementation of the image processing function
-void processImage(const Mat& image, const string& windowName) {
+void processImage(const Mat& image, const string& windowName, int width) {
 
     // Convert to grayscale
     Mat gray;
@@ -167,12 +169,13 @@ void processImage(const Mat& image, const string& windowName) {
     cout << "-----------------------------------------------" << endl;
     cout << "Actual height of the object " << realL << "mm" << endl;
     cout << "Actual length of the object " << realH << "mm" << endl;
+    cout << "Actual width of the object(Given) " << width << "mm" << endl;
     cout << "-----------------------------------------------" << endl;
 
     // Print real value at Window
-    string text = "Height: " + to_string(realL) + " mm, Length: " + to_string(realH) + " mm";
+    string text = "Height: " + to_string(realL) + " mm, Length: " + to_string(realH) + " mm, " + "Width(Given) :" + to_string(width) + " mm";
     Point Org(100, 300);  
-    putText(temp, text, Org, FONT_HERSHEY_SIMPLEX, 3, Scalar(0, 0, 0), 6);
+    putText(temp, text, Org, FONT_HERSHEY_SIMPLEX, 2, Scalar(0, 0, 0), 6);
 
     // Display the image
     namedWindow(windowName, WINDOW_NORMAL);
