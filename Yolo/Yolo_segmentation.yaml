@@ -1,0 +1,8 @@
+train: C:/Users/ehrpr/source/repos/DLIP/Datasets/images/training
+val: C:/Users/ehrpr/source/repos/DLIP/Datasets/images/validation
+
+# number of classes
+nc: 3
+
+# class names
+names: ['normal', 'benign', 'malignant']
