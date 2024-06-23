@@ -1,3 +1,10 @@
+# -------------------------------------------------------------------------------------------------
+# * @author  21900727 Garam Jin & 22100034 Eunji Ko
+# * @Date    2024-06-24
+# * @Mod	 2024-06-10 by YKKIM
+# * @brief   Final Project(DLIP)
+# -------------------------------------------------------------------------------------------------
+
 train: C:/Users/ehrpr/source/repos/DLIP/Datasets/images/training
 val: C:/Users/ehrpr/source/repos/DLIP/Datasets/images/validation
 
